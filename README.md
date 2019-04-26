@@ -1,5 +1,77 @@
 # ForgeRock SaaS Software Engineer Coding Challenge
 
+## Notes
+
+First, thank you for the opportunity.
+
+
+Due to a time crunch, I didn't have enough time to do this part of the challenge to the best of my ability. There were many external variables in play. 
+
+Since I didn't have a lot of time to do this, I spent a total of about 45 minutes that I did have available to complete the two items in this repo.
+
+First is workert-test.go. This proves that I know how to write a worker type project. No, it's no elegant, and no it's not useful. But it is basic and does what is needed.
+
+Second, I have go-redis.go.  This short script makes a publish subscribe connection to redis and returns the message. Again, is is elegant - HELL NO. But it is something.
+
+To install that which is needed by go-redis, you need to install redis locally.
+
+## Installation Notes:
+### Install redis
+#### On Mac
+ brew install redis
+
+#### From source
+$ mkdir redis && cd redis
+$ curl -O http://download.redis.io/redis-stable.tar.gz
+$ tar xzvf redis-stable.tar.gz
+$ cd redis-stable
+$ make
+$ make test
+$ sudo make install
+
+#### Start the redis server
+redis-server & 
+
+#### TO stop the redis server 
+type fg then ctrl-c the process.
+
+#### Running the two scripts
+##### go-redis.gp
+First run this: 
+
+go get github.com/garyburd/redigo/redis
+
+go run go-redis.go
+
+
+This will publish and return: 
+    Hello ForgeRock 
+
+##### workers-test.go
+
+This is a simple script with no real prerequiests. 
+
+just run:
+
+go run workers-test.go
+
+
+
+
+I'm sure I may have left something out since my environment has been working locally for sometime.
+
+##### Threat Analysis of this.
+
+It's pretty simple so there's really no threat. There could be some auth and auth added to the redis connection to disallow random users from adding entries to the channel. 
+
+##### Improvements
+There is a ton of room for improvements. I would like to create something like that that would allow me to have a chat bot like functionality that stores messages in redis and makes changes to an instance or pod in k8s on the fly.  
+
+
+
+----
+
+
 ## Project Background
 
 We have recently decided that all new projects will be done in Typescript for front-end work and Golang for back-end and utility work.  We obviously understand that not every solution will fit into those two buckets, but any outliers will be addressed on a case-by-case basis.  This coding challenge is meant to be non-trivial example of a problem we recently worked on originally in nodejs and then in golang.
@@ -32,4 +104,5 @@ Some requirements / concepts we would like to see (either in code or at least ou
 - [ ] :shipit:  Send the recruiter at ForgeRock the link to your repository.  
 
 We will review what you did during one of your interview sessions!
+
 
